@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
       },
     });
   res.status(200).json({
-    status: "succes",
+    status: "success",
     results: movie.length,
     data: {
       movies: movie,
@@ -82,7 +82,7 @@ router.get("/", async (req, res) => {
     // console.log("🚀 ~ file: movies.js:20 ~ router.get ~ movie", movie);
     // console.log("🚀 ~ file: movies.js:6 ~ router.get ~ mymovie", mymovie);
     return res.status(200).json({
-      status: "succes",
+      status: "success",
       results: movie.length,
       data: {
         movies: movie,
@@ -134,7 +134,7 @@ router.get("/", async (req, res) => {
         },
       });
     res.status(200).json({
-      status: "succes",
+      status: "success",
       results: movie.length,
       data: {
         movies: movie,
@@ -154,7 +154,7 @@ router.get("/", async (req, res) => {
   //     },
   //   });
   // res.status(200).json({
-  //   status: "succes",
+  //   status: "success",
   //   results: movie.length,
   //   data: {
   //     movies: movie,
@@ -170,7 +170,7 @@ router.post("/", async (req, res) => {
     const newMovie = await Movie.addMovie(movie);
     // console.log("🚀 ~ file: movies.js:151 ~ router.post ~ newMovie", newMovie);
     res.status(201).json({
-      status: "succes",
+      status: "success",
       data: {
         movie: newMovie,
       },
@@ -187,7 +187,7 @@ router.put("/:id", async (req, res) => {
     const newMovie = await Movie.replaceMovie(id, movie);
     // console.log("🚀 ~ file: movies.js:151 ~ router.post ~ newMovie", newMovie);
     res.status(201).json({
-      status: "succes",
+      status: "success",
       data: {
         movie: newMovie,
       },
@@ -204,7 +204,7 @@ router.patch("/:id", async (req, res) => {
     const newMovie = await Movie.updateMovie(id, movie);
     // console.log("🚀 ~ file: movies.js:151 ~ router.post ~ newMovie", newMovie);
     res.status(201).json({
-      status: "succes",
+      status: "success",
       data: {
         movie: newMovie,
       },

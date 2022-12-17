@@ -4,7 +4,7 @@ class Movies {
   constructor() {
     this.movies = client.db("sample_mflix").collection("movies");
     // console.log(this.db);
-    console.log("db connected");
+    console.log("db selected for sample_mflix collection movies");
   }
 
   async getMovie(id) {

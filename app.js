@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express, { json } from "express";
-import movieRouter from "./routes/movies.js";
+import moviesRouter from "./routes/movies.js";
+import theatersRouter from "./routes/theaters.js";
 const app = express();
 
 import morgan from "morgan";
@@ -18,7 +19,8 @@ app.use(json());
 //   res.end();
 // });
 
-app.use("/api/v1/movies", movieRouter);
+app.use("/api/v1/movies", moviesRouter);
+app.use("/api/v1/theaters", theatersRouter);
 app.listen(8080);
 
 // users
