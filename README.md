@@ -182,6 +182,17 @@ body:(example)
 
 ---
 
+----------------comments routes------------------------
+get comments by movie id
+localhost:8080/api/v1/movies/573a13bff29313caabd5e91e/comments?s=1&e=120
+s: start index of the comments
+e: end index of the comments
+rules:
+
+1. s should be less than e
+2. s and e should be greater than 0
+3. e-s should be less than 20
+
 ... working on it ...
 
 # how to run the api

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Movie from "../controllers/movies.js";
+import commentMoviesRouter from "./commentsMovies.js";
 // todo refactore this part (DRY)
 const router = Router();
 router.param("id", function (req, res, next, id) {
@@ -214,5 +215,83 @@ router.patch("/:id", async (req, res) => {
     throw e;
   }
 });
+router.use("/:id/comments", commentMoviesRouter);
+// import Comment from "../controllers/comments.js";
+
+// router.get("/:id/comments", async (req, res) => {
+//   const { id } = req.params;
+//   const { s: start, e: end } = req.query;
+//   // console.log("🚀 ~ file: comments.js:20 ~ router.get ~ end", end);
+//   // console.log("🚀 ~ file: comments.js:20 ~ router.get ~ start", start);
+//   if (!start || !end)
+//     return res.status(203).json({
+//       status: "fail",
+//       results: 0,
+//       data: {
+//         error: "start and end are required",
+//       },
+//     });
+//   if (+start < 0 || +end < 0)
+//     return res.status(203).json({
+//       status: "fail",
+//       results: 0,
+//       data: {
+//         error: "start and end must be positive integers",
+//       },
+//     });
+//   if (+start > +end)
+//     return res.status(203).json({
+//       status: "fail",
+//       results: 0,
+//       data: {
+//         error: "start must be less than end",
+//       },
+//     });
+//   if (+end - +start > 20)
+//     return res.status(203).json({
+//       status: "fail",
+//       results: 0,
+//       data: {
+//         error: "the difference between start and end must be less than 20",
+//       },
+//     });
+
+//   const comments = await Comment.getCommentsByMovie(id, +start, +end);
+//   // console.log("🚀 ~ file: comments.js:20 ~ router.get ~ comments", comments);
+//   // console.log("🚀 ~ file: comments.js:6 ~ router.get ~ mycomments", mycomments);
+//   if (!comments[0])
+//     return res.status(404).json({
+//       status: "fail",
+//       results: comments.length,
+//       data: {
+//         error: "can't find a comments with this movie id",
+//       },
+//     });
+//   res.status(200).json({
+//     status: "success",
+//     results: comments.length,
+//     data: {
+//       comments: comments,
+//     },
+//   });
+// });
+// router.post("/:id/comments/", async (req, res) => {
+//   // const commentschema = new SchemaObject({ name: String });
+//   try {
+//     const comment = req.body;
+//     // console.log("🚀 ~ file: comments.js:149 ~ router.post ~ comments", comments);
+//     const newcomments = await Comment.addComment(comment);
+//     // console.log("🚀 ~ file: comments.js:151 ~ router.post ~ newcomments", newcomments);
+//     res.status(201).json({
+//       status: "success",
+//       data: {
+//         comments: newcomments,
+//       },
+//     });
+//   } catch (e) {
+//     console.error(e);
+//     throw e;
+//   }
+// });
 
 export default router;

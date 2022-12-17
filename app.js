@@ -2,11 +2,13 @@ import dotenv from "dotenv";
 import express, { json } from "express";
 import moviesRouter from "./routes/movies.js";
 import theatersRouter from "./routes/theaters.js";
+import commentsRouter from "./routes/comments.js";
 const app = express();
 
 import morgan from "morgan";
 app.use(morgan("dev"));
 app.use(json());
+
 // app.param("id", (req, res, next, id) => {
 //   console.log("entred");
 //   console.log(id, "the log ");
@@ -20,6 +22,7 @@ app.use(json());
 // });
 
 app.use("/api/v1/movies", moviesRouter);
+app.use("/api/v1/comments", commentsRouter); //! the id of the movies
 app.use("/api/v1/theaters", theatersRouter);
 app.listen(8080);
 
