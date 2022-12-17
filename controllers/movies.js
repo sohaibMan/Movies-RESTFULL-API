@@ -16,6 +16,13 @@ class Movies {
   async getMovies(size) {
     return await this.movies.aggregate([{ $sample: { size } }]).toArray();
   }
+  async getMoviesByGenre(genre, size) {
+    // console.log(genre, size);
+    return await this.movies
+      .find({ genres: { $in: [genre] } })
+      .limit(size)
+      .toArray();
+  }
 }
 
 export default new Movies();

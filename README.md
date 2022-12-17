@@ -1,4 +1,4 @@
-this is an rest api made with node js and express js and mongodb atlas
+this is a rest api made with node js and express js and mongodb atlas
 
 in this is api i deal with the the sample_mflix database that contains data on movies and movie theaters. The database also contains collections for certain metadata, including users and comments on specific movies.
 
@@ -15,6 +15,11 @@ localhost:8080/api/v1/movies?option=random&size=20
 
 #get movie by id
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
+
+#get movies by genere
+localhost:8080/api/v1/movies?option=genre&size=200&genre=Crime
+*option: genre (case sensitive) (enum "Comedy", "Fantasy","Crime","Drama","Music","Adventure","History","Thriller","Animation","Family","Biography","Action","Film-Noir","Romance","Sci-Fi","War","Western","Horror","Musical", "Sport") ( may not exist in the database)
+*size: number of movies to return ( should be less than 20 and greater than 0)
 
 ... working on it ...
 
