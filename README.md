@@ -35,20 +35,20 @@ type (string): The type of media (e.g. "movie", "tv series").
 tomatoes (object): An object containing information about the movie from the Rotten Tomatoes database. - viewer (object): An object containing information about viewer ratings for the movie. - rating (number): The movie's Rotten Tomatoes viewer rating (out of 5). - numReviews (number): The number of viewer reviews the movie has received on Rotten Tomatoes. - meter (number): The movie's Rotten Tomatoes meter score (out of 100). - lastUpdated (date): The date the movie's information was last updated on Rotten Tomatoes.
 }
 
-#get sample (random) movies
+dget sample (random) movies
 localhost:8080/api/v1/movies?option=random&size=20
 *option: random
 *size: number of movies to return ( should be less than 20 and greater than 0)
 
-#get movie by id
+dget movie by id
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
 
-#get movies by genere
+dget movies by genere
 localhost:8080/api/v1/movies?option=genre&size=200&genre=Crime
 *option: genre (case sensitive) (enum "Comedy", "Fantasy","Crime","Drama","Music","Adventure","History","Thriller","Animation","Family","Biography","Action","Film-Noir","Romance","Sci-Fi","War","Western","Horror","Musical", "Sport") ( may not exist in the database)
 *size: number of movies to return ( should be less than 20 and greater than 0)
 
-#post movie
+dpost movie
 localhost:8080/api/v1/movies
 body:(example)
 
@@ -104,11 +104,11 @@ body:(example)
 }
 }
 }
-#put movie (update with replacing the movie in the database)
+dput movie (update with replacing the movie in the database)
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
 body:(example): the exemple is the same as the post movie( provide the whole movie)
 
-#patch movie by id (update without replacing the movie in the database)
+dpatch movie by id (update without replacing the movie in the database)
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
 body:(example)
 {
@@ -122,13 +122,15 @@ body:(example)
 ---
 
 2. /theaters
-   #get a theater by id
+   dget a theater by id
    localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72d
 
-   #get randome theaters
+   # get randome theaters
+
    localhost:8080/api/v1/theaters?option=random&size=10
 
-   #put(replace ) a theater by id
+   # put(replace ) a theater by id
+
    localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
    body :
    {
@@ -150,10 +152,12 @@ body:(example)
    }
    }
 
-   #delete a theart by id
+   # delete a theart by id
+
    localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
 
-   #post(create a theart)
+   # post(create a theart)
+
    localhost:8080/api/v1/theaters/
    body:
    {
@@ -174,7 +178,8 @@ body:(example)
    }
    }
    }
-   #update
+
+   # update
 
 ---
 
@@ -182,8 +187,12 @@ body:(example)
 
 ---
 
-----------------comments routes------------------------
-get comments by movie id
+---
+
+# # ----------------movies-comments routes------------------------
+
+# get comments by movie id
+
 localhost:8080/api/v1/movies/573a13bff29313caabd5e91e/comments?s=1&e=120
 s: start index of the comments
 e: end index of the comments
@@ -192,6 +201,60 @@ rules:
 1. s should be less than e
 2. s and e should be greater than 0
 3. e-s should be less than 20
+
+ddelete all coments related to a movie
+localhost:8080/api/v1/movies/573a13bff29313caabd5e91e/comments
+dpost a comment by movie_id (movie_id included)
+localhost:8080/api/v1/movies/573a13bff29313caabd5e91e/comments
+{
+"name": "hamdon howa afdal prof dyal math ",
+"email": "hamdoun@fakegmail.com",
+"text": "bidon monzaid3 had chi li kan9ole.",
+"movies_id":"573a13bff29313caabd5e91e",
+"date": {
+"$date": {
+      "$numberLong": "1029646567000"
+}
+}
+}
+
+---
+
+----------------comments routes------------------------
+
+---
+
+# get comment by id
+
+localhost:8080/api/v1/comments/639e4a953f08b8399a327dfc
+
+# put (replace) a comment
+
+localhost:8080/api/v1/comments/5a9427648b0beebeb69579f5
+{
+"name": "damoma doma doma",
+"email": "john_bishop@fakegmail.com",
+"movie_id": {
+"$oid": "573a1390f29313caabcd446f"
+  },
+  "text": "Id error ab at molestias dolorum incidunt. Non deserunt praesentium dolorem nihil. Optio tempora vel ut quas.\nMinus dicta numquam quasi. Rem totam cumque at eum. Ullam hic ut ea magni.",
+  "date": {
+    "$date": {
+"$numberLong": "159496282000"
+}
+}
+}
+
+# delete a comment by id
+
+localhost:8080/api/v1/comments/5a9427648b0beebeb69579f5
+
+# update a comment by id
+
+localhost:8080/api/v1/comments/5a9427648b0beebeb69579f5
+{"name":"John Bishop"}
+
+----------------comments routes end------------------------
 
 ... working on it ...
 

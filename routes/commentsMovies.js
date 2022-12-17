@@ -60,14 +60,14 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   // const commentschema = new SchemaObject({ name: String });
   try {
-    const comment = req.body;
-    // console.log("🚀 ~ file: comments.js:149 ~ router.post ~ comments", comments);
+    const comment = { movie_id: req.params.id, ...req.body };
+    console.log("🚀 ~ file: comments.js:149 ~ router.post ~ comments", comment);
     const newcomments = await CommentMovie.addComment(comment);
     // console.log("🚀 ~ file: comments.js:151 ~ router.post ~ newcomments", newcomments);
     res.status(201).json({
       status: "success",
       data: {
-        comments: newcomments,
+        comments: { newcomments },
       },
     });
   } catch (e) {
