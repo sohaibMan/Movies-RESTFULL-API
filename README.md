@@ -28,10 +28,10 @@ localhost:8080/api/v1/movies?option=genre&size=200&genre=Crime
 1. clone the repo
 2. cd into the repo
 3. run npm install
-4. create a .env file and add the following
-   DB_USERNAME=<your username>
-   DB_PASSWORD=<your password>
-   DB_CLUSTER=<your cluster name>
+4. create a .env file and add the following<br/>
+   DB_USERNAME=your_username<br/>
+   DB_PASSWORD=your_password><br/>
+   DB_CLUSTER=your_cluster name><br/>
 5. run npm start
 6. open postman and test the api
 7. enjoy

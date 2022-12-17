@@ -1,0 +1,103 @@
+  {
+        "plot": "The cartoonist, Winsor McCay, brings the Dinosaurus back to life in the figure of his latest creation, Gertie the Dinosaur.",
+        "genres": [
+          "Animation",
+          "Short",
+          "Comedy"
+        ],
+        "runtime": 12,
+        "cast": [
+          "Winsor McCay",
+          "George McManus",
+          "Roy L. McCardell"
+        ],
+        "num_mflix_comments": 0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTQxNzI4ODQ3NF5BMl5BanBnXkFtZTgwNzY5NzMwMjE@._V1_SY1000_SX677_AL_.jpg",
+        "title": "Gertie the Dinosaur",
+        "fullplot": "Winsor Z. McCay bets another cartoonist that he can animate a dinosaur. So he draws a big friendly herbivore called Gertie. Then he get into his own picture. Gertie walks through the picture, eats a tree, meets her creator, and takes him carefully on her back for a ride.",
+        "languages": [
+          "English"
+        ],
+        "released": "1914-09-15T00:00:00.000Z",
+        "directors": [
+          "Winsor McCay"
+        ],
+        "writers": [
+          "Winsor McCay"
+        ],
+        "awards": {
+          "wins": 1,
+          "nominations": 0,
+          "text": "1 win."
+        },
+        "lastupdated": "2015-08-18 01:03:15.313000000",
+        "year": 1914,
+        "imdb": {
+          "rating": 7.3,
+          "votes": 1837,
+          "id": 4008
+        },
+        "countries": [
+          "USA"
+        ],
+        "type": "movie",
+        "tomatoes": {
+          "viewer": {
+            "rating": 3.7,
+            "numReviews": 29
+          },
+          "lastUpdated": "2015-08-10T19:20:03.000Z"
+        }
+      }
+
+      {
+  "plot": "Three men hammer on an anvil and pass a bottle of beer around.",
+  "genres": [
+    "Short"
+  ],
+  "runtime": 1,
+  "cast": [
+    "Charles Kayser",
+    "John Ott"
+  ],
+  "num_mflix_comments": 0,
+  "title": "Blacksmith Scene",
+  "fullplot": "A stationary camera looks at a large anvil with a blacksmith behind it and one on either side. The smith in the middle draws a heated metal rod from the fire, places it on the anvil, and all three begin a rhythmic hammering. After several blows, the metal goes back in the fire. One smith pulls out a bottle of beer, and they each take a swig. Then, out comes the glowing metal and the hammering resumes.",
+  "countries": [
+    "USA"
+  ],
+  "released": {
+    "$date": {
+      "$numberLong": "-2418768000000"
+    }
+  },
+  "directors": [
+    "William K.L. Dickson"
+  ],
+  "rated": "UNRATED",
+  "awards": {
+    "wins": 1,
+    "nominations": 0,
+    "text": "1 win."
+  },
+  "lastupdated": "2015-08-26 00:03:50.133000000",
+  "year": 1893,
+  "imdb": {
+    "rating": 6.2,
+    "votes": 1189,
+    "id": 5
+  },
+  "type": "movie",
+  "tomatoes": {
+    "viewer": {
+      "rating": 3,
+      "numReviews": 184,
+      "meter": 32
+    },
+    "lastUpdated": {
+      "$date": {
+        "$numberLong": "1435516449000"
+      }
+    }
+  }
+}

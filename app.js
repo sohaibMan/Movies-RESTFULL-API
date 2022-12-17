@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
-import express from "express";
+import express, { json } from "express";
 import movieRouter from "./routes/movies.js";
 const app = express();
 
 import morgan from "morgan";
 app.use(morgan("dev"));
+app.use(json());
 // app.param("id", (req, res, next, id) => {
 //   console.log("entred");
 //   console.log(id, "the log ");

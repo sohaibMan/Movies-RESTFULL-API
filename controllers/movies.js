@@ -23,6 +23,33 @@ class Movies {
       .limit(size)
       .toArray();
   }
+  async deleteMovie(id) {
+    return await this.movies.deleteOne({ _id: ObjectId(id) });
+  }
+  async addMovie(movie) {
+    return await this.movies.insertOne(movie);
+  }
+  async replaceMovie(id, movie) {
+    // return await this.movies.findOneAndReplace({ _id: ObjectId(id) }, movie, {
+    //   returnDocument: "after",
+    //   upsert: true,
+    // });
+    return await this.movies.replaceOne({ _id: ObjectId(id) }, movie, {
+      upsert: true,
+    });
+  }
+  async updateMovie(id, movie) {
+    return await this.movies.findOneAndUpdate(
+      { _id: ObjectId(id) },
+      {
+        $set: movie,
+      },
+      {
+        returnDocument: "after",
+        upsert: true,
+      }
+    );
+  }
 }
 
 export default new Movies();

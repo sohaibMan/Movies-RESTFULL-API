@@ -36,6 +36,28 @@ router.get("/:id", async (req, res) => {
     },
   });
 });
+router.delete("/:id", async (req, res) => {
+  // console.log("req catched");
+  try {
+    const id = req.params.id;
+    const movie = await Movie.deleteMovie(id);
+    // console.log("🚀 ~ file: movies.js:43 ~ router.delete ~ movie", movie);
+    if (!movie.acknowledged)
+      return res.status(404).json({
+        status: "fail",
+        results: movie.length,
+        data: {
+          error: "An error was occured ",
+        },
+      });
+    res.json(movie);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+  // console.log("🚀 ~ file: movies.js:20 ~ router.get ~ movie", movie);
+  // console.log("🚀 ~ file: movies.js:6 ~ router.get ~ mymovie", mymovie);
+});
 router.get("/", async (req, res) => {
   // console.log("req catched");
   // const { start, end } = req.query;
@@ -139,6 +161,58 @@ router.get("/", async (req, res) => {
   //   },
   // });
   // res.send("done");
+});
+router.post("/", async (req, res) => {
+  // const movieSchema = new SchemaObject({ name: String });
+  try {
+    const movie = req.body;
+    // console.log("🚀 ~ file: movies.js:149 ~ router.post ~ movie", movie);
+    const newMovie = await Movie.addMovie(movie);
+    // console.log("🚀 ~ file: movies.js:151 ~ router.post ~ newMovie", newMovie);
+    res.status(201).json({
+      status: "succes",
+      data: {
+        movie: newMovie,
+      },
+    });
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+});
+router.put("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const movie = req.body;
+    const newMovie = await Movie.replaceMovie(id, movie);
+    // console.log("🚀 ~ file: movies.js:151 ~ router.post ~ newMovie", newMovie);
+    res.status(201).json({
+      status: "succes",
+      data: {
+        movie: newMovie,
+      },
+    });
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+});
+router.patch("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const movie = req.body;
+    const newMovie = await Movie.updateMovie(id, movie);
+    // console.log("🚀 ~ file: movies.js:151 ~ router.post ~ newMovie", newMovie);
+    res.status(201).json({
+      status: "succes",
+      data: {
+        movie: newMovie,
+      },
+    });
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
 });
 
 export default router;
