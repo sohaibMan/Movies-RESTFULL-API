@@ -8,26 +8,21 @@ link to the database: https://docs.atlas.mongodb.com/sample-data/sample-mflix/
 
 1. clone the repo
 2. cd into the repo
-3. run npm install
+3. run `npm install`
 4. create a .env file and add the following<br/>
    DB_USERNAME=your_username<br/>
    DB_PASSWORD=your_password><br/>
    DB_CLUSTER=your_cluster name><br/>
-5. run npm start
-6. open postman and test the api
+5. `run npm start`
+6. open postman/thunder client extention and test the api
 7. enjoy
 
-## api routes docs:
+# api routes docs:
 
-1. /movies
+## 1. /movies
 
----
-
-----------------movies routes-----------------------
-
----
-
-movies schema :
+_*movies schema*_:
+<br/>
 {
 plot (string): A brief summary of the movie plot.
 genres (array of strings): A list of genres the movie belongs to.
@@ -48,24 +43,28 @@ type (string): The type of media (e.g. "movie", "tv series").
 tomatoes (object): An object containing information about the movie from the Rotten Tomatoes database. - viewer (object): An object containing information about viewer ratings for the movie. - rating (number): The movie's Rotten Tomatoes viewer rating (out of 5). - numReviews (number): The number of viewer reviews the movie has received on Rotten Tomatoes. - meter (number): The movie's Rotten Tomatoes meter score (out of 100). - lastUpdated (date): The date the movie's information was last updated on Rotten Tomatoes.
 }
 
-dget sample (random) movies
+# get sample (random) movies
+
 localhost:8080/api/v1/movies?option=random&size=20
 *option: random
 *size: number of movies to return ( should be less than 20 and greater than 0)
 
-dget movie by id
+# get movie by id
+
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
 
-dget movies by genere
+# get movies by genere
+
 localhost:8080/api/v1/movies?option=genre&size=200&genre=Crime
 *option: genre (case sensitive) (enum "Comedy", "Fantasy","Crime","Drama","Music","Adventure","History","Thriller","Animation","Family","Biography","Action","Film-Noir","Romance","Sci-Fi","War","Western","Horror","Musical", "Sport") ( may not exist in the database)
 *size: number of movies to return ( should be less than 20 and greater than 0)
 
-dpost movie
+# post movie
+
 localhost:8080/api/v1/movies
 body:(example)
-
-      {
+</br>
+{
 
 "plot": "Three men hammer on an anvil and pass a bottle of beer around.",
 "genres": [
@@ -117,11 +116,14 @@ body:(example)
 }
 }
 }
-dput movie (update with replacing the movie in the database)
+
+# put movie (update with replacing the movie in the database)
+
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
 body:(example): the exemple is the same as the post movie( provide the whole movie)
 
-dpatch movie by id (update without replacing the movie in the database)
+# patch movie by id (update without replacing the movie in the database)
+
 localhost:8080/api/v1/movies/573a1390f29313caabcd50e5
 body:(example)
 {
@@ -130,81 +132,94 @@ body:(example)
 
 ---
 
----------------movies routes end--------------------
+# 2. /theaters
+
+# get a theater by id
+
+localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72d
+
+# get randome theaters
+
+localhost:8080/api/v1/theaters?option=random&size=10
+
+# put(replace ) a theater by id
+
+localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
+body :
+{
+"theaterId": 1003,
+"location": {
+"address": {
+"street1": "340 W Market",
+"city": "Bloomington",
+"state": "MN",
+"zipcode": "55425"
+},
+"geo": {
+"type": "Point",
+"coordinates": [
+-93.24565,
+44.85466
+]
+}
+}
+}
+
+# delete a theart by id
+
+localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
+
+# post(create a theart)
+
+localhost:8080/api/v1/theaters/
+body:
+{
+"theaterId": 1003,
+"location": {
+"address": {
+"street1": "340 W Market",
+"city": "Bloomington",
+"state": "MN",
+"zipcode": "55425"
+},
+"geo": {
+"type": "Point",
+"coordinates": [
+-93.24565,
+44.85466
+]
+}
+}
+}
+
+# update a theater by id (patch)
+
+localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
+body:
+{
+"theaterId": 1003,
+"location": {
+"address": {
+"street1": "340 W Market",
+"city": "Bloomington",
+"state": "MN",
+"zipcode": "55425"
+},
+"geo": {
+"type": "Point",
+"coordinates": [
+-93.24565,
+44.85466
+]
+}
+}
+}
 
 ---
 
-2. /theaters
-   dget a theater by id
-   localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72d
+3. /comments
 
-   # get randome theaters
-
-   localhost:8080/api/v1/theaters?option=random&size=10
-
-   # put(replace ) a theater by id
-
-   localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
-   body :
-   {
-   "theaterId": 1003,
-   "location": {
-   "address": {
-   "street1": "340 W Market",
-   "city": "Bloomington",
-   "state": "MN",
-   "zipcode": "55425"
-   },
-   "geo": {
-   "type": "Point",
-   "coordinates": [
-   -93.24565,
-   44.85466
-   ]
-   }
-   }
-   }
-
-   # delete a theart by id
-
-   localhost:8080/api/v1/theaters/59a47286cfa9a3a73e51e72c
-
-   # post(create a theart)
-
-   localhost:8080/api/v1/theaters/
-   body:
-   {
-   "theaterId": 1003,
-   "location": {
-   "address": {
-   "street1": "340 W Market",
-   "city": "Bloomington",
-   "state": "MN",
-   "zipcode": "55425"
-   },
-   "geo": {
-   "type": "Point",
-   "coordinates": [
-   -93.24565,
-   44.85466
-   ]
-   }
-   }
-   }
-
-   # update
-
----
-
-----------------movies routes-----------------------
-
----
-
----
-
-# # ----------------movies-comments routes------------------------
-
-# get comments by movie id
+## get comments by movie id
 
 localhost:8080/api/v1/movies/573a13bff29313caabd5e91e/comments?s=1&e=120
 s: start index of the comments
@@ -233,9 +248,7 @@ localhost:8080/api/v1/movies/573a13bff29313caabd5e91e/comments
 
 ---
 
-----------------comments routes------------------------
-
----
+# 3. /comments
 
 # get comment by id
 
