@@ -3,11 +3,14 @@ import express, { json } from "express";
 import moviesRouter from "./routes/movies.js";
 import theatersRouter from "./routes/theaters.js";
 import commentsRouter from "./routes/comments.js";
+import cors from "cors";
 const app = express();
 
 import morgan from "morgan";
 app.use(morgan("dev"));
 app.use(json());
+app.use(cors());
+// This is CORS-enabled for all origins!
 
 // app.param("id", (req, res, next, id) => {
 //   console.log("entred");

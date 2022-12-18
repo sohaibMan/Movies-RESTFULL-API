@@ -4,7 +4,20 @@ in this is api i deal with the the sample_mflix database that contains data on m
 
 link to the database: https://docs.atlas.mongodb.com/sample-data/sample-mflix/
 
-api routes:
+# how to run the api
+
+1. clone the repo
+2. cd into the repo
+3. run npm install
+4. create a .env file and add the following<br/>
+   DB_USERNAME=your_username<br/>
+   DB_PASSWORD=your_password><br/>
+   DB_CLUSTER=your_cluster name><br/>
+5. run npm start
+6. open postman and test the api
+7. enjoy
+
+## api routes docs:
 
 1. /movies
 
@@ -257,16 +270,3 @@ localhost:8080/api/v1/comments/5a9427648b0beebeb69579f5
 ----------------comments routes end------------------------
 
 ... working on it ...
-
-# how to run the api
-
-1. clone the repo
-2. cd into the repo
-3. run npm install
-4. create a .env file and add the following<br/>
-   DB_USERNAME=your_username<br/>
-   DB_PASSWORD=your_password><br/>
-   DB_CLUSTER=your_cluster name><br/>
-5. run npm start
-6. open postman and test the api
-7. enjoy
