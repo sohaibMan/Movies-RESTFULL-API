@@ -1,15 +1,35 @@
-import dotenv from "dotenv";
+// import rootDir from "./helpers/rootDir.js";
 import express, { json } from "express";
 import moviesRouter from "./routes/movies.js";
 import theatersRouter from "./routes/theaters.js";
 import commentsRouter from "./routes/comments.js";
+import uploadRouter from "./routes/upload.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 const app = express();
+// import path from "path";
 
 import morgan from "morgan";
 app.use(morgan("dev"));
 app.use(json());
 app.use(cors());
+app.use(cookieParser());
+app.use(express.static("public"));
+// app.get("/", express.static(path.join(rootDir, "public")));
+
+app.use("api/v1", (req, res, next) => {
+  const { session_id } = req.cookies;
+  if (!session_id)
+    return res
+      .status(403)
+      .json({ status: "fail", data: { error: "not authorize" } });
+  next();
+});
+
+app.get("/api/v1/signin", (req, res) => {
+  res.cookie("session_id", "123143", { secure: "true", domain: "localhost" });
+  res.status(200).send();
+});
 // This is CORS-enabled for all origins!
 
 // app.param("id", (req, res, next, id) => {
@@ -27,6 +47,7 @@ app.use(cors());
 app.use("/api/v1/movies", moviesRouter);
 app.use("/api/v1/comments", commentsRouter); //! the id of the movies
 app.use("/api/v1/theaters", theatersRouter);
+app.use("/api/v1/upload", uploadRouter);
 app.listen(8080);
 
 // users
